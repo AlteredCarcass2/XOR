@@ -168,7 +168,7 @@ public class WindowMain implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.textField.setText(null);
+		EncryptFile(textField.getText(), txtUseOnlyAscii.getText(), txtTest.getText());
 		
 	}
 }
