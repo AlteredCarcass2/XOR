@@ -2,10 +2,14 @@ package gui;
 
 import java.awt.EventQueue;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -96,7 +100,7 @@ public class WindowMain implements ActionListener{
 	 * @param pswd
 	 * @return
 	 */
-	public static String properPSWD(String pswd) {
+	public String properPSWD(String pswd) {
 		String[] parts = pswd.split(" ");
 		String proper = "";
 		for(String s : parts) {
@@ -105,10 +109,43 @@ public class WindowMain implements ActionListener{
 		return proper;
 	}
 	
-	public static void EncryptFile(String path, String pswd) {
+	public void EncryptFile(String path, String pswd, String name) {
 		if(!checkPathToFile(path)) {
-			
+			textField.setText("Wrong path");
+			return;
 		}
+		if(pswd != null) {
+			pswd = properPSWD(pswd);
+		}else {
+			txtUseOnlyAscii.setText("Wrong pswd");
+			return;
+		}
+		try {
+			File output = new File(name);
+			output.createNewFile();
+		
+			FileReader fr = new FileReader(path);
+			FileWriter fw = new FileWriter(output);
+		
+		
+			int index = 0;
+			int input = ' ';
+			while((input = fr.read()) > 0) {
+				int encrypted = input ^ pswd.charAt(index % pswd.length());
+				fw.write(encrypted);
+			
+				index++;
+			}
+					
+			
+			fr.close();
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
@@ -117,7 +154,7 @@ public class WindowMain implements ActionListener{
 	 * @param path
 	 * @return if path to file exists
 	 */
-	public static boolean checkPathToFile(String path) {
+	public boolean checkPathToFile(String path) {
 		File p = new File(path);
 		if(p.exists()) {
 			return true;
