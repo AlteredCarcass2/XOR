@@ -12,7 +12,7 @@ public class WindowMain {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtUseOnlyAscii;
 	private JTextField textField_2;
 
 	/**
@@ -43,7 +43,7 @@ public class WindowMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 451, 136);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -62,10 +62,12 @@ public class WindowMain {
 		lblEncryptionPassword.setBounds(10, 36, 132, 14);
 		frame.getContentPane().add(lblEncryptionPassword);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(152, 34, 134, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		txtUseOnlyAscii = new JTextField();
+		txtUseOnlyAscii.setText("use only ASCII");
+		txtUseOnlyAscii.setToolTipText("");
+		txtUseOnlyAscii.setBounds(152, 34, 134, 20);
+		frame.getContentPane().add(txtUseOnlyAscii);
+		txtUseOnlyAscii.setColumns(10);
 		
 		JLabel lblOutputFilepath = new JLabel("Output filename:");
 		lblOutputFilepath.setFont(new Font("Tahoma", Font.PLAIN, 13));
