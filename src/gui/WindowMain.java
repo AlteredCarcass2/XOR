@@ -16,7 +16,7 @@ public class WindowMain implements ActionListener{
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField txtUseOnlyAscii;
-	private JTextField textField_2;
+	private JTextField txtTest;
 
 	/**
 	 * Launch the application.
@@ -77,10 +77,11 @@ public class WindowMain implements ActionListener{
 		lblOutputFilepath.setBounds(10, 61, 101, 14);
 		frame.getContentPane().add(lblOutputFilepath);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(121, 59, 165, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		txtTest = new JTextField();
+		txtTest.setText("test");
+		txtTest.setBounds(121, 59, 165, 20);
+		frame.getContentPane().add(txtTest);
+		txtTest.setColumns(10);
 		
 		JButton btnEncrypt = new JButton("Encrypt");
 		btnEncrypt.setBounds(307, 33, 89, 23);
@@ -89,8 +90,8 @@ public class WindowMain implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		this.textField.setText(null);
 		
 	}
 }
