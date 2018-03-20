@@ -5,10 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class WindowMain {
+public class WindowMain implements ActionListener{
 
 	private JFrame frame;
 	private JTextField textField;
@@ -82,5 +85,12 @@ public class WindowMain {
 		JButton btnEncrypt = new JButton("Encrypt");
 		btnEncrypt.setBounds(307, 33, 89, 23);
 		frame.getContentPane().add(btnEncrypt);
+		btnEncrypt.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
